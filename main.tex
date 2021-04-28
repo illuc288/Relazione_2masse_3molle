@@ -1,0 +1,230 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{bm}
+
+%DOMANDE
+%   Devo mettere tutte le formule per propagazione errori?
+%   Devo mettere delle tabelle alla fine o basta l'excel?
+%   Perché non può esser minuscola la massa??
+%   Formule approssimate non le usiamo?
+
+
+% mettere titolo in inglese
+\title{ Measuring the frequency  of a system with 2 masses and 3 springs}
+%Studio del sistema a 2 masse e 3 molle
+\author{William Luciani}
+\date{April 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+     %TODO
+\end{abstract}
+
+%DECIDI SE TOGLIERE VERBI DALLE SECTION
+%Ricontrolla e traduci
+\section{Instruments} \label{sec:instr}
+\begin{enumerate}
+    \item Actuator
+    \item Function Generator SiemensAX34
+    \item Oscilloscope Tektronix TDS1002, 60 MHz
+    \item 3 similar springs
+    \item masses...
+    \item 2 CDs
+    \item Ultrasonic sensor
+    \item Logger Pro software
+    \item Adhesive tape
+    \item Tape measure
+    \item Precision scale
+    \item Horizontal support to hang the springs on
+    \item Horizontal support for the ultrasonic
+          sensor
+\end{enumerate}
+
+\section{Introduction} \label{sec:intro}
+We studied a system with 2 masses and 3 springs. Such a system has 
+two proper frequencies, this means 
+that the system will naturally oscillate only at those two 
+frequencies, so that the amplitude is a linear combination of two 
+sine waves with the two proper frequencies. If we assume that 
+the three springs are the same and the two masses are as well 
+we derive the following formulas, where $k$ is the elastic coefficient of the springs, $m$ is the mass and the tilde is for the anti-phase frequency.
+\begin{align}
+    \nu_{th} &= \frac{1}{2\pi}   \sqrt{\frac{ k}{m}}
+        \label{eq:nuth} \\
+    \tilde \nu_{th} &= \frac{1}{2\pi}   \sqrt{\frac{3k}{m}}
+        \label{eq:antinuth}
+\end{align}
+However when dealing with real masses and springs they most 
+likely won't be equal. Without making the assumptions above 
+the following formulas can be derived, where $k_i$ are the elastic coefficients of the springs, $M_i$ are the 2 masses, $m_i$ are the masses of the 3 springs and the tilde is for the anti-phase frequency.
+\begin{align}
+           \nu_{exp} &= \frac{1}{2\pi}   \sqrt{\frac{k_1+k_3}
+           {M_1 + M_2 + \frac{1}{3} m_1 + m_2 + \frac{1}{3}m_3 }} 
+           \label{eq:nuexp}  \\
+    \tilde \nu_{exp} &= \frac{1}{2\pi}   \sqrt{\frac{k_1 +4k_2 +k_3}
+           {M_1 + M_2 + \frac{1}{3} (m_1 + m_2 + m_3) }} 
+           \label{eq:antinuexp} 
+\end{align}
+In this experiment we calculated these values and compared them with the frequencies we measured in various ways. 
+
+\section{First setup} \label{sec:setup1}
+%devo dire static??
+The first setup was to measure $k$, the elastic coefficient of the springs. 
+%TODO  setup!!
+To measure $k$ we used the following formula.
+\begin{align}
+    mg &= kx \\
+    m  &= \frac{k}{g}x
+\end{align}
+%spiegare cos'è ogni singola variabile
+the second formula shows the linear dependence between $m$ and $x$.
+We attached one end of the spring to a metal support and we attached a
+tape measure to the same support so that it was also hanging
+vertically and it could he used to measure the position of the other
+end of the spring. We then attached different masses, one at a time, to the other 
+end of the spring. When the masses are attached to the spring they
+begin to oscillate. We gradually slowed the mass down until it was
+still and then we measured its position on the tape measure beside
+it. By doing so we obtained different values for $x$ with the
+corresponding values for $m$. We plotted these values to verify that
+there was a linear relation between the two and we then made a linear
+regression to find the coefficient $k/g$ with its corresponding
+uncertainty. We then multiplied by $g$ both the value and its uncertainty to obtain $k$. 
+
+To test the fit of the data we did a $\chi^2$ test with $5-2 = 3$ degrees of freedom, and calculated the level of compatibility.
+
+This same process was repeated for all 3 springs and the following values were obtained.
+%TODO valori di k e grafico compatibilità
+The three aren't compatible, as the second one is $2?? \sigma$ away from the other two. 
+%rivedi t test
+
+\section{Calculating $\bm \nu$ from k and m} \label{sec:nukm}
+
+We then used equations \ref{eq:nuth} and \ref{eq:antinuth} from section \ref{sec:intro} to calculate $\nu_{th}$
+and $\tilde \nu_{th}$. These formulas assume that all springs have
+the same elastic coefficient, so we calculated a weighted average of
+the different values of $k$ to use in these formulas. Since the phase
+frequency doesn't depend on the spring in the middle, the
+weighted average $k_{wav}$ was calculated only on spring 1 and 3.
+Instead, for the frequency of anti-phase the weighted average 
+$\tilde k_{wav}$ was calculated on all springs. The uncertainties in $k_{wav}$ and $\tilde k_{wav}$ are calculated with the formulas for the weighted average. 
+\begin{align}
+           k_{wav} &= \\
+    \tilde k_{wav} &=
+\end{align}
+As $m$ we used $M_1=M_2=$.
+For the uncertainty in the frequencies we used the following formulas, where $\delta(\cdot)$ represents the uncertainty of the given variable.
+\begin{equation} \label{eq:inc_nuth}
+    \delta \nu_{th}
+    = \frac{1}{2\pi} \frac{1}{2\sqrt{k/m}} \delta \left ( \frac{k}{m} \right )
+    = \frac{1}{2\pi} \frac{1}{2\sqrt{k/m}}  \frac{k}{m} \sqrt{ \left ( \frac{ \delta k}{k}  \right ) ^2 +
+           \left ( \frac{ \delta m}{m}  \right ) ^2}
+\end{equation}
+For the uncertainty in $\tilde \nu_{th}$ we used the same formula, with a factor of $\sqrt 3$.
+
+Afterward, we used equations \ref{eq:nuexp} and \ref{eq:antinuexp} from section \ref{sec:intro} to calculate
+$\nu_{exp}$ and $\tilde \nu_{exp}$. We used the masses $M_i$ and $k_i$ as shown in the following section. To calculate the uncertainty of the frequencies we first introduced the following variables.
+\begin{align}
+    M &= M_1 + M_2 + \frac{1}{3} m_1 + m_2 + \frac{1}{3}m_3\\
+    K &= k_1 + k_3 \\
+    \delta M &= \sqrt{
+        ( \delta M_1)^2 + ( \delta M_2)^2 + 
+        ( \delta \frac{m_1}{3} )^2 + ( \delta m_2)^2 + 
+        ( \delta \frac{m_3}{3} )^2} \\
+    \delta K &= \sqrt{
+        ( \delta k_1)^2 + ( \delta k_3)^2 } \\
+    \tilde M &= M_1 + M_2 + \frac{1}{3} (m_1 + m_2 + m_3) \\
+    \tilde K &= k_1 +4k_2 +k_3 \\
+    \delta \tilde M &= \sqrt{
+        ( \delta M_1)^2 + ( \delta M_2)^2 + 
+        ( \delta \frac{m_1}{3} )^2 + 
+        ( \delta \frac{m_2}{3} )^2 +
+        ( \delta \frac{m_3}{3} )^2} \\
+    \delta \tilde K &= \sqrt{
+        ( \delta k_1)^2 + ( \delta (4k_2))^2 + 
+        ( \delta k_3)^2 } 
+\end{align}
+Formulas \ref{eq:nuexp} and \ref{eq:antinuexp} can now be written more simply as:
+\begin{align}
+    \nu_{exp} &= \frac{1}{2\pi}   \sqrt{\frac{ K}{M}} \\
+    \tilde \nu_{exp} &= \frac{1}{2\pi}   \sqrt{
+    \frac{\tilde K}{\tilde M}  }
+\end{align}
+And the uncertainty can be calculated with formulas analogous to \ref{eq:inc_nuth}
+
+
+\begin{align}
+\delta \nu_{exp} &= \frac{1}{2\pi} 
+        \frac{1}{2\sqrt{K/M}}  \frac{K}{M} 
+        \sqrt{ \left ( \frac{ \delta K}{K}  \right ) ^2 +
+               \left ( \frac{ \delta M}{M}  \right ) ^2  } \\
+    \delta \tilde \nu_{exp} &= \frac{1}{2\pi} 
+        \frac{1}{2\sqrt{\tilde K/\tilde M}}  \frac{\tilde K}{\tilde M} 
+        \sqrt{ \left ( \frac{ \delta \tilde K}{\tilde K}  \right ) ^2 +
+               \left ( \frac{ \delta \tilde M}{\tilde M}  \right ) ^2  } 
+\end{align}
+           
+%RISULTATI E CAPIRE SE DEVO SCRIVERE CALCOLO INCERTEZZE
+
+
+\section{Second setup}
+The second setup is the actual 2 mass, 3 spring system we want to examine. The springs and masses are setup as shown in the image. 
+% aggiungi immagine
+The spring on top is attached to a metal bar and the spring on the bottom is attached to the actuator. The actuator is connected to a function generator and to an oscilloscope to measure the frequency at which the it is oscillating. On a plate beside the attuatore we placed the ultrasonic sensor which is connected to the computer program "Logger Pro". The transmitter in the sensor emits sound waves and the receiver sends an electric signal when the sound comes back. The device measures the time it takes for the sound to come back and it then divides by the speed of sound to obtain the position that reflect the sound waves. So the sensor effectively gives us the position of the bottom mass at regular intervals that we set on Logger Pro. The program also offers calculates the FFT, so we have another way to read the frequency at which the system oscillates which we can compare to what we read on the oscilloscope. 
+
+\section{Estimating $\bm \nu$ from the FFT of a generic motion}
+The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice, the graph shows the result of the first FFT. 
+%INCLUDERE GRAFICO FFT
+
+We obtained the following values. The uncertainty was estimated by calculating the width of the peak in the FFT for each frequency.
+%includere valori FFT
+
+The two values for phase and the two for anti-phase were compatible so we calculated the two weighted averages and obtained the results below.
+
+
+
+\section{Calculating $\bm \nu$ by measuring the period of oscillation}
+
+The second way we measured the frequency was by making the two masses move in phase and then measuring the time it took to complete $n=10$ oscillations. This time was measured 5 times and the same process was repeated for anti-phase. To make the masses move in phase, we manually lifted the two masses of approximately the same height and then let go. Instead, to make them move in anti-phase, we lifted one of the masses and lowered the other, by approximately the same height and then let go.
+We then calculated the mean of the 5 values for phase and the 5 for anti phase. The results are shown below, along with the uncertainty of the mean. 
+%includere medie e incertezze
+
+
+
+\section{Measuring $ \bm \nu $ from the resonance curve}
+The final way we measured the frequencies was by studying the system with a driving external time-dependent sinusoidal force. By varying the driving frequencies we can reconstruct the resonance curve of the system, from which we can determine the proper frequency of the system, as it is the center of the curve. We repeated this process for both the phase frequency and the anti-phase frequency.
+\subsection{Measuring $\bm \Gamma$}
+The width of the resonance curve depends on $\Gamma$, the damping coefficient. The higher it, is the wider the resonance curve is. In order to reconstruct the curve, we want it to be as wide as possible, so we want $\Gamma$ to be as high as possible. This is why we attached disks to the masses, to increase friction and thus increase $\Gamma$ as well. Furthermore, $\Gamma$ depends on the masses used. Smaller masses will have a higher $\Gamma$, so we used a small mass. %perché non può esser minuscola??
+To measure $\Gamma$ we would have had to impose the phase motion as explained above, activate the ultrasonic sensor from Logger Pro and wait for it to finish. After, we would have had to calculate the amplitude of motion near the beginning of the sample??. To do this we had to find a maximum and an adjacent minimum of the position and calculate the semi-difference between the two. We call $A_i$ this amplitude and $t_i$ the average of the time measurement for the maximum and that of the minimum. We repeat the same process near the end of the sample to obtain the values $A_f$ and $t_f$. $\Gamma$ can then be calculated as follows.
+\begin{align}
+    A(t) &= A_0 e^{-\frac{t}{2} \Gamma} \\
+    A_f / A_i &= e^{-\frac{t_f-t_i}{2} \Gamma} \\
+    \Gamma &= -2 \frac{ \ln(A_f - A_i) }{ t_f-t_i }
+\end{align}
+
+We didn't do this process, but another group with similar masses and springs found the following values. 
+%dati altro gruppo
+We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma$, so we later checked whether the FWHM of the curve was what we expected.
+
+\subsection{Resonance curve}
+We started with the resonance curve for the phase frequency. We turned on the motor at a frequency close to the proper frequency we had previously measured with other methods. We started with this frequency to be sure that the oscillations of the system weren't too wide, as if this happened we saw the motion would start to become irregular???. At this frequency, we regulated the amplitude of the function generator until we were satisfied with the oscillations of the system. We then started the ultrasonic sensor from Logger Pro and waited for the sampling to finish. We then checked the FFT from Logger Pro to be sure that the main frequency was the same or at least close enough to that we had read on the oscilloscope. After, we measured the amplitude of the oscillations close to the end of the sample as explained above. 
+
+The same process, without changing the amplitude of the motor was repeated many times, slowly varying the driving frequency each time. 
+
+The entire process was then repeated for the anti-phase frequency. The two resonance curves are shown. 
+%grafici curve di risonanza
+From this data we then measured all the parameters of the resonance curve: 
+\begin{equation}
+    a (\nu_d) = \frac{F/m}{  (2\pi)^2
+                \sqrt{( \nu^2 - \nu_d^2 )^2 +
+                \left ( \frac{\Gamma}{2\pi} \right )^2 \nu_d^2}}
+\end{equation}  
+Where $\nu$ is the proper frequency and $\nu_d$ is the driving frequency.
+
+\section{Beats}
+
+\end{document}
