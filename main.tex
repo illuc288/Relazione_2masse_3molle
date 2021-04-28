@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{bm}
+\usepackage{wrapfig}
+
 
 %DOMANDE
 %   Devo mettere tutte le formule per propagazione errori?
@@ -31,20 +33,39 @@
     \item Actuator
     \item Function Generator SiemensAX34
     \item Oscilloscope Tektronix TDS1002, 60 MHz
-    \item 3 similar springs
-    \item masses...
-    \item 2 CDs
-    \item Ultrasonic sensor
+    \item 3 similar springs, with masses $m_1 = 0,0340$ kg, $m_2 = 0,0341$ kg, \hbox{$m_3 = 0,0339$ kg}
+    \item 5 different weights, with the masses in Table \ref{tab:regm}
+    \item Two weights with a mass of 0,1268 kg
+    \item Two CDs with a mass of 0,0153 kg          %\setcounter{enumi}{1}
+    \item Ultrasonic sensor, sensibility 0,001 m
     \item Logger Pro software
     \item Adhesive tape
-    \item Tape measure
-    \item Precision scale
+    \item Tape measure, sensibility 0,001 m
+    \item Precision scale with 0,0001 kg sensibility
     \item Horizontal support to hang the springs on
     \item Horizontal support for the ultrasonic
           sensor
 \end{enumerate}
+The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precision scale.
 
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{Introduction} \label{sec:intro}
+\begin{wraptable}{r}{4cm}
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+         & massa \\ \hline
+        1 & 0,0198 \\ \hline
+        2 & 0,0999 \\ \hline
+        3 & 0,1196 \\ \hline
+        4 & 0,1393 \\ \hline
+        5 & 0,1591 \\ \hline
+    \end{tabular}
+    \caption{Masses used for calculating k}
+    \label{tab:regm}
+\end{wraptable}
 We studied a system with 2 masses and 3 springs. Such a system has 
 two proper frequencies, this means 
 that the system will naturally oscillate only at those two 
@@ -71,6 +92,10 @@ the following formulas can be derived, where $k_i$ are the elastic coefficients 
 \end{align}
 In this experiment we calculated these values and compared them with the frequencies we measured in various ways. 
 
+
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{First setup} \label{sec:setup1}
 %devo dire static??
 The first setup was to measure $k$, the elastic coefficient of the springs. 
@@ -102,6 +127,10 @@ This same process was repeated for all 3 springs and the following values were o
 The three aren't compatible, as the second one is $2?? \sigma$ away from the other two. 
 %rivedi t test
 
+
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{Calculating $\bm \nu$ from k and m} \label{sec:nukm}
 
 We then used equations \ref{eq:nuth} and \ref{eq:antinuth} from section \ref{sec:intro} to calculate $\nu_{th}$
@@ -171,11 +200,18 @@ And the uncertainty can be calculated with formulas analogous to \ref{eq:inc_nut
 %RISULTATI E CAPIRE SE DEVO SCRIVERE CALCOLO INCERTEZZE
 
 
-\section{Second setup}
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
+\section{Second setup} \label{sec:setup2}
 The second setup is the actual 2 mass, 3 spring system we want to examine. The springs and masses are setup as shown in the image. 
 % aggiungi immagine
 The spring on top is attached to a metal bar and the spring on the bottom is attached to the actuator. The actuator is connected to a function generator and to an oscilloscope to measure the frequency at which the it is oscillating. On a plate beside the attuatore we placed the ultrasonic sensor which is connected to the computer program "Logger Pro". The transmitter in the sensor emits sound waves and the receiver sends an electric signal when the sound comes back. The device measures the time it takes for the sound to come back and it then divides by the speed of sound to obtain the position that reflect the sound waves. So the sensor effectively gives us the position of the bottom mass at regular intervals that we set on Logger Pro. The program also offers calculates the FFT, so we have another way to read the frequency at which the system oscillates which we can compare to what we read on the oscilloscope. 
 
+
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{Estimating $\bm \nu$ from the FFT of a generic motion}
 The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice, the graph shows the result of the first FFT. 
 %INCLUDERE GRAFICO FFT
@@ -186,7 +222,9 @@ We obtained the following values. The uncertainty was estimated by calculating t
 The two values for phase and the two for anti-phase were compatible so we calculated the two weighted averages and obtained the results below.
 
 
-
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{Calculating $\bm \nu$ by measuring the period of oscillation}
 
 The second way we measured the frequency was by making the two masses move in phase and then measuring the time it took to complete $n=10$ oscillations. This time was measured 5 times and the same process was repeated for anti-phase. To make the masses move in phase, we manually lifted the two masses of approximately the same height and then let go. Instead, to make them move in anti-phase, we lifted one of the masses and lowered the other, by approximately the same height and then let go.
@@ -194,7 +232,9 @@ We then calculated the mean of the 5 values for phase and the 5 for anti phase. 
 %includere medie e incertezze
 
 
-
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{Measuring $ \bm \nu $ from the resonance curve}
 The final way we measured the frequencies was by studying the system with a driving external time-dependent sinusoidal force. By varying the driving frequencies we can reconstruct the resonance curve of the system, from which we can determine the proper frequency of the system, as it is the center of the curve. We repeated this process for both the phase frequency and the anti-phase frequency.
 \subsection{Measuring $\bm \Gamma$}
@@ -210,6 +250,9 @@ We didn't do this process, but another group with similar masses and springs fou
 %dati altro gruppo
 We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma$, so we later checked whether the FWHM of the curve was what we expected.
 
+
+%====================================================================================================================================
+%====================================================================================================================================
 \subsection{Resonance curve}
 We started with the resonance curve for the phase frequency. We turned on the motor at a frequency close to the proper frequency we had previously measured with other methods. We started with this frequency to be sure that the oscillations of the system weren't too wide, as if this happened we saw the motion would start to become irregular???. At this frequency, we regulated the amplitude of the function generator until we were satisfied with the oscillations of the system. We then started the ultrasonic sensor from Logger Pro and waited for the sampling to finish. We then checked the FFT from Logger Pro to be sure that the main frequency was the same or at least close enough to that we had read on the oscilloscope. After, we measured the amplitude of the oscillations close to the end of the sample as explained above. 
 
@@ -225,6 +268,10 @@ From this data we then measured all the parameters of the resonance curve:
 \end{equation}  
 Where $\nu$ is the proper frequency and $\nu_d$ is the driving frequency.
 
+
+%====================================================================================================================================
+%====================================================================================================================================
+%====================================================================================================================================
 \section{Beats}
 
 \end{document}
