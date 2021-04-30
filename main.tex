@@ -32,21 +32,20 @@
 %Ricontrolla e traduci
 \section{Instruments} \label{sec:instr}
 \begin{enumerate}
-    \item Actuator
-    \item Function Generator SiemensAX34
-    \item Oscilloscope Tektronix TDS1002, 60 MHz
     \item 3 similar springs, with masses $m_1 = 0,0340$ kg, $m_2 = 0,0341$ kg, \hbox{$m_3 = 0,0339$ kg}
     \item 5 different weights, with the masses in Table \ref{tab:regm}
     \item Two weights with a mass of 0,1268 kg
     \item Two CDs with a mass of 0,0153 kg          %\setcounter{enumi}{1}
-    \item Ultrasonic sensor, sensibility 0,001 m
-    \item Logger Pro software
     \item Adhesive tape
     \item Tape measure, sensibility 0,001 m
     \item Precision scale with 0,0001 kg sensibility
     \item Horizontal support to hang the springs on
-    \item Horizontal support for the ultrasonic
-          sensor
+    \item Horizontal support for the ultrasonic sensor
+    \item Ultrasonic sensor, sensibility 0,001 m
+    \item Logger Pro software
+    \item Actuator
+    \item Function Generator SiemensAX34
+    \item Oscilloscope Tektronix TDS1002, 60 MHz
 \end{enumerate}
 The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precision scale.
 
@@ -54,22 +53,8 @@ The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precis
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Introduction} \label{sec:intro}
-\begin{wraptable}{r}{4cm}
-    \centering
-    \begin{tabular}{|l|l|}
-    \hline
-         & massa \\ \hline
-        1 & 0,0198 \\ \hline
-        2 & 0,0999 \\ \hline
-        3 & 0,1196 \\ \hline
-        4 & 0,1393 \\ \hline
-        5 & 0,1591 \\ \hline
-    \end{tabular}
-    \caption{Masses used for calculating k}
-    \label{tab:regm}
-\end{wraptable}
 We studied a system with 2 masses and 3 springs, as shown in image AGGIUNGI IMMAGINE
-Such a system has two proper frequencies, this means that the system will naturally oscillate only at those two frequencies, so that the mplitude is a linear combination of two sine waves with the two proper frequencies. 
+Such a system has two proper frequencies, this means that the system will naturally oscillate only at those two frequencies, so that the amplitude is a linear combination of two sine waves with the two proper frequencies. 
 We call the two proper frequencies, phase and anti-phase frequency. If the system oscillates at the phase frequency, the two weights oscillate up and down, perfectly in sync. Instead if the system oscillates at the anti-phase frequency the two weights oscillate such that when one goes down, the other one goes up and vice versa. 
 
 If we assume that the three springs are the same and the two masses are as well 
@@ -101,6 +86,20 @@ In this experiment we calculated these values and compared them with the frequen
 %====================================================================================================================================
 \section{First setup} \label{sec:setup1}
 %devo dire static??
+\begin{wraptable}{r}{4cm}
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+         & massa \\ \hline
+        1 & 0,0198 \\ \hline
+        2 & 0,0999 \\ \hline
+        3 & 0,1196 \\ \hline
+        4 & 0,1393 \\ \hline
+        5 & 0,1591 \\ \hline
+    \end{tabular}
+    \caption{Masses used for calculating k}
+    \label{tab:regm}
+\end{wraptable}
 The first setup was to measure $k$, the elastic coefficient of the springs. 
 %TODO  setup!!
 To measure $k$ we used the following formula.
@@ -119,20 +118,21 @@ there was a linear relation between the two and we then made a linear
 regression to find the coefficient $k/g$ with its corresponding
 uncertainty. We then multiplied by $g$ both the value and its uncertainty to obtain $k$. 
 
+The uncertainty we used in $x$ was 0,001 m.
+%The uncertainty we used in $x$ was 0,002 m for "k_2" which was the first spring we studied, and 0,001 m for the other two. We used a higher uncertainty in the first spring because by studying the $\chi^2$ of the linear regression we realized we may have underestimated the uncertainty, as we were probably less precise since it was the first spring we studied. 
+
 To test the fit of the data we did a $\chi^2$ test with $5-2 = 3$ degrees of freedom, and calculated the level of compatibility.
 
 This same process was repeated for all 3 springs and the following values were obtained.
 \begin{align}
-    k_1 &= \dots \quad \tilde \chi_1^2 = \dots \quad P_1 = \dots \\
-    k_2 &= \dots \quad \tilde \chi_2^2 = \dots \quad P_2 = \dots \\
-    k_3 &= \dots \quad \tilde \chi_3^2 = \dots \quad P_3 = \dots 
+    k_1 &= (20,3 \pm 0,4) \text{N/m} \quad \tilde \chi_1^2 = 0,09 \quad P_1 = \dots \\
+    k_2 &= (21,6 \pm 0,4) \text{N/m} \quad \tilde \chi_2^2 = 2,77 \quad P_2 = \dots \\
+    k_3 &= (20,7 \pm 0,4) \text{N/m} \quad \tilde \chi_3^2 = 0,28 \quad P_3 = \dots 
 \end{align}
+The second one has a high $\tilde \chi^2$, mainly due to the third mass. We realized this during the experiment, so we weighed the mass again and took the measurements again but we obtained the same values. We believe that either we underestimated the uncertainties or we made a mistake in the measurents, as even a difference of 0,001 m changes the $\tilde \chi^2$ significantly.
 
-
-%TODO valori di k e grafico compatibilità
-The three aren't compatible, as the second one is $2?? \sigma$ away from the other two. 
-%rivedi t test
-
+The three aren't compatible, as the second one is more than $2 \sigma$ away from the other two. 
+%rivedi t test. NO! non t-test ma semplice gauss
 
 %====================================================================================================================================
 %====================================================================================================================================
@@ -143,15 +143,14 @@ We then used equations \ref{eq:nuth} and \ref{eq:antinuth} from section \ref{sec
 and $\tilde \nu_{th}$. These formulas assume that all springs have
 the same elastic coefficient, so we calculated a weighted average of
 the different values of $k$ to use in these formulas. As can be seen from the more precise formula, the phase
-frequency doesn't depend on the spring in the middle, so the
-weighted average $k_{wav}$ was calculated only on spring 1 and 3.
+frequency doesn't depend on the spring in the middle, and that's why we chose to put that spring in the middle. Also, because of this, the weighted average $k_{wav}$ was calculated only on spring 1 and 3.
 Instead, for the frequency of anti-phase the weighted average 
 $\tilde k_{wav}$ was calculated on all springs. We calculated the uncertainties in $k_{wav}$ and $\tilde k_{wav}$ with the formulas for the weighted average. 
 \begin{align}
-           k_{wav} &= \dots \\
-    \tilde k_{wav} &= \dots 
+           k_{wav} &= (20,82 \pm 0,23) \text{N/m} \\
+    \tilde k_{wav} &= (20,50 \pm 0,28) \text{N/m}
 \end{align}
-As $m$ we used $M_1=M_2=0,1421 \pm 0,00014$ kg, the sum of the mass of the cd and the weight. Its uncertainty was calculated as the root-sum-square??? of the uncertainties in the mass of the cd and of the weight.
+As $m$ we used $M_1=M_2=0,1421 \pm 0,00014$ kg, the sum of the mass of the cd and the weight. Its uncertainty was calculated as the root-sum-square of the uncertainties in the mass of the cd and of the weight.
 To calculate the uncertainty in the frequencies we used the following formulas, where $\delta(\cdot)$ represents the uncertainty of the given variable.
 \begin{equation} \label{eq:inc_nuth}
     \delta \nu_{th}
@@ -159,7 +158,11 @@ To calculate the uncertainty in the frequencies we used the following formulas, 
     = \frac{1}{2\pi} \frac{1}{2\sqrt{k/m}}  \frac{k}{m} \sqrt{ \left ( \frac{ \delta k}{k}  \right ) ^2 +
            \left ( \frac{ \delta m}{m}  \right ) ^2}
 \end{equation}
-For the uncertainty in $\tilde \nu_{th}$ we used the same formula, with a factor of $\sqrt 3$.
+For the uncertainty in $\tilde \nu_{th}$ we used the same formula, with a factor of $\sqrt 3$. We obtained the following results
+\begin{align}
+           \nu_{th} &= (1,911 \pm 0,013) \text{Hz}\\
+    \tilde \nu_{th} &= (3,337 \pm 0,019) \text{Hz}
+\end{align}
 
 Afterward, we used equations \ref{eq:nuexp} and \ref{eq:antinuexp} from section \ref{sec:intro} to calculate
 $\nu_{exp}$ and $\tilde \nu_{exp}$. To calculate the uncertainty of the frequencies we first introduced the following variables.
@@ -202,9 +205,19 @@ And the uncertainty can be calculated with formulas analogous to \ref{eq:inc_nut
         \sqrt{ \left ( \frac{ \delta \tilde K}{\tilde K}  \right ) ^2 +
                \left ( \frac{ \delta \tilde M}{\tilde M}  \right ) ^2  } 
 \end{align}
-           
-%RISULTATI E CAPIRE SE DEVO SCRIVERE CALCOLO INCERTEZZE
 
+With these calculations we obtained the following results.
+\begin{align}
+           \nu_{exp} &= (1,745 \pm 0,012) \text{Hz}\\
+    \tilde \nu_{exp} &= (3,182 \pm 0,022) \text{Hz}
+\end{align}
+
+And for the ratio between the two we obtained the following result, which isn't compatible????
+\begin{equation}
+    \tilde \nu_{exp} / \nu_{exp} = 1,823 \pm 0,013
+\end{equation}
+
+%COMPATIBILITA
 
 %====================================================================================================================================
 %====================================================================================================================================
@@ -224,18 +237,17 @@ The transmitter in the sensor emits sound waves and the receiver sends an electr
 \section{Estimating $\bm \nu$ from the FFT of a generic motion}
 The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice, the graph shows the result of the first FFT. 
 %INCLUDERE GRAFICO FFT
-
 We obtained the following values. The uncertainty was estimated by calculating the width of the peak in the FFT for each frequency.
 \begin{align}
-    \nu_g^1 &= \dots \pm \dots \quad \nu_g^2 = \dots \pm \dots \\
-    \tilde \nu_g^1 &= \dots \pm \dots \quad \tilde \nu_g^2 = \dots \pm \dots 
+           \nu_g^1 &= (1,729 \pm 0,015) \text{Hz} \quad        \nu_g^2 = (1,729 \pm 0,015) \text{Hz} \\
+    \tilde \nu_g^1 &= (3,106 \pm 0,015) \text{Hz} \quad \tilde \nu_g^2 = (3,096 \pm 0,015) \text{Hz}
 \end{align}
 The two values for phase and the two for anti-phase were compatible so we calculated the two weighted averages and obtained the results below.
 \begin{align}
-    \nu_g &= \dots \\
-    \tilde \nu_g &= \dots
+           \nu_g &= (1,729 \pm 0,011) \text{Hz}\\
+    \tilde \nu_g &= (3,101 \pm 0,011) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_g / \tilde \nu_g = \dots$ which is compatible o no???
+We also calculated the ratio between the two and obtained $ \nu_g / \tilde \nu_g = 1,794 \pm 0,009$ which is compatible o no???
 
 
 %====================================================================================================================================
@@ -247,10 +259,10 @@ The second way we measured the frequency was by making the two masses move in ph
 
 We then calculated the mean of the 5 values for phase and the 5 for anti phase. The results are shown below, along with the uncertainty of the mean. 
 \begin{align}
-    \nu_T &= \dots \\
-    \tilde \nu_T &= \dots
+           \nu_T &= (1,80 \pm 0,03) \text{Hz} \\
+    \tilde \nu_T &= (2,96 \pm 0,13) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T = \dots$ which is compatible o no???
+We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T = 1,65 \pm 0,07$ which is compatible o no???
 %includere medie e incertezze
 
 
@@ -269,12 +281,11 @@ To measure $\Gamma$ we would have had to impose the phase motion as explained ab
 \begin{align}
     A(t) &= A_0 e^{-\frac{t}{2} \Gamma} \\
     A_f / A_i &= e^{-\frac{t_f-t_i}{2} \Gamma} \\
-    \Gamma &= -2 \frac{ \ln(A_f - A_i) }{ t_f-t_i }
+    \Gamma &= -2 \frac{ \ln(A_f / A_i) }{ t_f-t_i }
 \end{align}
 
-We didn't do this process, but another group with similar masses and springs found the following values. 
-%dati altro gruppo
-We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma = \dots$, so we later checked whether the FWHM of the curve was what we expected.
+We didn't do this process, but another group with similar masses and springs found $\Gamma = 0,0232$ INCERTEZZA?? and $\tilde \Gamma = 0,031$
+We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma = \dots$ for the phase frequency and $\sqrt 3 \tilde \Gamma = \dots$ for the anti-phase frequency, so we later checked whether the FWHM of the curve was what we expected. VEDI CHE VALORI METTERE
 
 
 %====================================================================================================================================
