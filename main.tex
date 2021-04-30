@@ -25,14 +25,13 @@
 \maketitle
 
 \begin{abstract}
-    jsakljdalskjdlaksjd jsakljdalskjdlaksjd jsakljdalskjdlaksjd jsakljdalskjdlaksjdjsakljdalskjdlaksjd
-    jsakljdalskjdlaksjd jsakljdalskjdlaksjd jsakljdalskjdlaksjd jsakljdalskjdlaksjdjsakljdalskjdlaksjd
-    jsakljdalskjdlaksjd jsakljdalskjdlaksjd jsakljdalskjdlaksjd jsakljdalskjdlaksjdjsakljdalskjdlaksjd
+    We calculated the phase and anti-phase frequency of a 2 mass, 3 spring system using the theoretical formulas. We then compared these values to the values we measured in different ways, however the measured values mostly weren't compatible with the theoretical values, probably because of a systematic error. We then observed and studied the beats phenomenon.
 \end{abstract}
 
 %DECIDI SE TOGLIERE VERBI DALLE SECTION
 %Ricontrolla e traduci
 \section{Instruments} \label{sec:instr}
+
 \begin{enumerate}
     \item 3 similar springs, with masses $m_1 = 0,0340$ kg, $m_2 = 0,0341$ kg, \hbox{$m_3 = 0,0339$ kg}
     \item 5 different weights, with the masses in Table \ref{tab:regm}
@@ -50,16 +49,15 @@
     \item Function Generator SiemensAX34
     \item Oscilloscope Tektronix TDS1002, 60 MHz, sensibility 0,005 Hz
 \end{enumerate}
+
 The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precision scale. The uncertainty in all the frequencies measured from the oscilloscope is 0,005 Hz, its sensibility.
 
 %====================================================================================================================================
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Introduction} \label{sec:intro}
-We studied a system with 2 masses and 3 springs, as shown in image \ref{img:setup}
+We studied a system with 2 masses and 3 springs, as shown in figure 1. %scrivo 1 perchè è buggato
 Such a system has two proper frequencies, this means that the system will naturally oscillate only at those two frequencies, so that the amplitude is a linear combination of two sine waves with the two proper frequencies. 
-
-
 \begin{wrapfigure}{r}{0.4\textwidth}
   \begin{center}
     \includegraphics[width=0.48\textwidth]{Setup}
@@ -98,6 +96,17 @@ In this experiment we calculated these values and compared them with the frequen
 %====================================================================================================================================
 \section{First setup} \label{sec:setup1}
 %devo dire static??
+
+The first setup was to measure $k$, the elastic coefficient of the springs. 
+%TODO  setup!!
+To measure $k$ we used the following formula.
+\begin{align}
+    mg &= kx \\
+    m  &= \frac{k}{g}x
+\end{align}
+%spiegare cos'è ogni singola variabile
+The second formula shows the linear dependence between $m$ and $x$.
+
 \begin{wraptable}{r}{4cm}
     \centering
     \begin{tabular}{|l|l|}
@@ -112,16 +121,6 @@ In this experiment we calculated these values and compared them with the frequen
     \caption{Masses used for calculating k}
     \label{tab:regm}
 \end{wraptable}
-The first setup was to measure $k$, the elastic coefficient of the springs. 
-%TODO  setup!!
-To measure $k$ we used the following formula.
-\begin{align}
-    mg &= kx \\
-    m  &= \frac{k}{g}x
-\end{align}
-%spiegare cos'è ogni singola variabile
-The second formula shows the linear dependence between $m$ and $x$.
-
 We attached one end of the spring to a metal support and we attached a tape measure to the same support so that they were both hanging vertically. Both were secured using adhesive tape. The tape measure could then be used to measure the position of the other end of the spring. We then attached different masses, one at a time, to the other end of the spring. When the masses are attached to the spring they begin to oscillate. We gradually slowed the mass down until it was still and then we measured its position on the tape measure beside it. 
 
 We repeated this process for the 5 masses in table \ref{tab:regm} and by doing so we obtained different values for $x$ with the
@@ -217,14 +216,12 @@ And the uncertainty can be calculated with formulas analogous to \ref{eq:inc_nut
         \sqrt{ \left ( \frac{ \delta \tilde K}{\tilde K}  \right ) ^2 +
                \left ( \frac{ \delta \tilde M}{\tilde M}  \right ) ^2  } 
 \end{align}
-
 With these calculations we obtained the following results.
 \begin{align}
            \nu_{exp} &= (1,745 \pm 0,012) \text{Hz}\\
     \tilde \nu_{exp} &= (3,182 \pm 0,022) \text{Hz}
 \end{align}
-
-And for the ratio between the two we obtained the following result, which isn't compatible with $\sqrt 3$, the ratio between the theoretical frequencies. ??? di quanto?
+And for the ratio between the two frequencies we obtained the following result, which isn't compatible with $\sqrt 3$, the ratio between the theoretical frequencies. 
 \begin{equation}
     \tilde \nu_{exp} / \nu_{exp} = 1,823 \pm 0,013
 \end{equation}
@@ -233,9 +230,9 @@ And for the ratio between the two we obtained the following result, which isn't 
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Second setup} \label{sec:setup2}
-The second setup is the 2 mass, 3 spring system we want to examine. The springs and masses are setup as shown in the image \ref{img:setup}
+The second setup is the 2 mass, 3 spring system we want to examine. The springs and masses are setup as shown in figure 1. % il ref non va 
 In the middle we put the spring with the different elastic coefficient $k_2$, so that at least for the phase frequency the assumption that the springs have the same elastic coefficient is true. 
-The spring on top is attached to a metal bar and the spring on the bottom is attached to the actuator. The actuator is connected to a function generator and to an oscilloscope to measure the frequency at which the it is oscillating. On a plate beside the actuator we placed the ultrasonic sensor which is connected to the computer program "Logger Pro". 
+The spring on top is attached to a metal bar and the spring on the bottom is attached to the actuator. The actuator is connected to a function generator and to an oscilloscope to measure the frequency at which it is oscillating. On a plate beside the actuator we placed the ultrasonic sensor which is connected to the computer program "Logger Pro". 
 
 The transmitter in the sensor emits sound waves and the receiver sends an electric signal when the sound comes back. The device measures the time it takes for the sound to come back and it then divides by the speed of sound to obtain the position of the object that reflected the sound waves. So the sensor effectively gives us the position of the bottom mass at regular intervals that we set on Logger Pro. The program also calculates the FFT, so we have another way to read the frequency at which the system oscillates which we can compare to the value we read on the oscilloscope. 
 
@@ -243,31 +240,31 @@ The transmitter in the sensor emits sound waves and the receiver sends an electr
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Estimating $\bm \nu$ from the FFT of a generic motion}
-The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice and obtained the following values. The uncertainty was estimated by calculating the width of the peak in the FFT for each frequency.
+The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. We set up Logger Pro with a sampling rate of 30 samples/s and sampling time of 100 s. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice and obtained the following values. The uncertainty was estimated by calculating the width of the peak in the FFT for each frequency.
 \begin{align}
            \nu_g^1 &= (1,729 \pm 0,015) \text{Hz} \quad        \nu_g^2 = (1,729 \pm 0,015) \text{Hz} \\
     \tilde \nu_g^1 &= (3,106 \pm 0,015) \text{Hz} \quad \tilde \nu_g^2 = (3,096 \pm 0,015) \text{Hz}
 \end{align}
-The two values for phase and the two for anti-phase were compatible so we calculated the two weighted averages and obtained the results below.
+The two values for phase and the two for anti-phase were compatible so we calculated the two averages and obtained the results below.
 \begin{align}
            \nu_g &= (1,729 \pm 0,011) \text{Hz}\\
     \tilde \nu_g &= (3,101 \pm 0,011) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_g / \tilde \nu_g = 1,794 \pm 0,009$ which isn't compatible with $\sqrt 3$
+We also calculated the ratio between the two frequencies and obtained $ \nu_g / \tilde \nu_g = 1,794 \pm 0,009$ which isn't compatible with $\sqrt 3$.
 
 %====================================================================================================================================
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Calculating $\bm \nu$ by measuring the period of oscillation}
 
-The second way we measured the frequency was by making the two masses move in phase and then measuring the time it took to complete $n=10$ oscillations. This time was measured 5 times with the stopwatch and the same process was repeated for anti-phase. To make the masses move in phase, we manually lifted the two masses of approximately the same height and then let go. Instead, to make them move in anti-phase, we lifted one of the masses and lowered the other, by approximately the same height and then let go.
+The second way we measured the frequency was by making the two masses move in phase and then measuring with the stopwatch the time it took to complete $n=10$ oscillations. This time was measured 5 times and the same process was repeated for anti-phase. To make the masses move in phase, we manually lifted the two masses of approximately the same height and then let go. Instead, to make them move in anti-phase, we lifted one of the masses and lowered the other, by approximately the same height and then let go.
 
-We then calculated the mean of the 5 values for phase and the 5 for anti phase. The results are shown below, along with the uncertainty of the mean. 
+We then calculated the mean of the 5 values for phase and the 5 for anti-phase. The results are shown below, along with the uncertainty of the mean. 
 \begin{align}
            \nu_T &= (1,80 \pm 0,03) \text{Hz} \\
     \tilde \nu_T &= (2,96 \pm 0,13) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T = 1,65 \pm 0,07$ which is compatible with $\sqrt 3$ within $1 \sigma$.
+We also calculated the ratio between the two frequencies and obtained $ \nu_T / \tilde \nu_T = 1,65 \pm 0,07$ which is compatible with $\sqrt 3$ within $1 \sigma$.
 %includere medie e incertezze
 
 
@@ -275,14 +272,14 @@ We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Measuring $ \bm \nu $ from the resonance curve}
-The final way we measured the frequencies was by studying the system with a driving external time-dependent sinusoidal force. By varying the driving frequencies we can reconstruct the resonance curve of the system, from which we can determine the proper frequency of the system, as it is the center of the curve. This is true in the approximation that $\Gamma^2 << \nu$ which can be assumed in this case. We repeated this process for both the phase frequency and the anti-phase frequency.
+The final way we measured the frequencies was by studying the system with a driving external time-dependent sinusoidal force. By varying the driving frequencies we can reconstruct the resonance curve of the system, from which we can determine the proper frequency of the system, as it is the center of the curve. This is true in the approximation that the damping coefficient $\Gamma$ is such that $\Gamma^2 << \nu$ which can be assumed in this case. We repeated this process for both the phase frequency and the anti-phase frequency.
 
 
 %====================================================================================================================================
 %====================================================================================================================================
 \subsection{Measuring $\bm \Gamma$}
-The width of the resonance curve depends on $\Gamma$, the damping coefficient. The higher it, is the wider the resonance curve is. In order to reconstruct the curve, we want it to be as wide as possible, so we want $\Gamma$ to be as high as possible. This is why we attached disks to the masses, to increase friction and thus increase $\Gamma$ as well. Furthermore, $\Gamma$ depends on the masses used. Smaller masses will have a higher $\Gamma$, so we used a small mass. %perché non può esser minuscola??
-To measure $\Gamma$ we would have had to impose the phase motion as explained above, activate the ultrasonic sensor from Logger Pro and wait for it to finish. After, we would have had to calculate the amplitude of motion near the beginning of the dataset??. To do this we had to find a maximum and an adjacent minimum of the position and calculate the semi-difference between the two. We call $A_i$ this amplitude and $t_i$ the average of the time measurement for the maximum and that of the minimum. We repeat the same process near the end of the dataset to obtain the values $A_f$ and $t_f$. $\Gamma$ can then be calculated as follows.
+The width of the resonance curve depends on $\Gamma$. The higher it, is the wider the resonance curve is. In order to reconstruct the curve, we want it to be as wide as possible, so we want $\Gamma$ to be as high as possible. This is why we attached disks to the masses, to increase friction and thus increase $\Gamma$ as well. Furthermore, $\Gamma$ depends on the masses used. Smaller masses will have a higher $\Gamma$, so we used a small mass. %perché non può esser minuscola??
+To measure $\Gamma$ we would have had to impose the phase motion as explained above, activate the ultrasonic sensor from Logger Pro and wait for it to finish. After, we would have had to calculate the amplitude of motion near the beginning of the dataset. To do this we had to find a maximum and an adjacent minimum of the position and calculate the semi-difference between the two. We call $A_i$ this amplitude and $t_i$ the average of the time measurement for the maximum and that of the minimum. We repeat the same process near the end of the dataset to obtain the values $A_f$ and $t_f$. $\Gamma$ can then be calculated as follows.
 %\begin{align}
 %    A(t) &= A_0 e^{-\frac{t}{2} \Gamma} \\
 %    A_f / A_i &= e^{-\frac{t_f-t_i}{2} \Gamma} \\
@@ -292,9 +289,8 @@ To measure $\Gamma$ we would have had to impose the phase motion as explained ab
     \Gamma = -2 \frac{ \ln(A_f / A_i) }{ t_f-t_i }
 \end{equation}
 
-We didn't do this process, but another group with similar masses and springs found $\Gamma = 0,023$ INCERTEZZA?? and $\tilde \Gamma = 0,031$
-We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma = 0,040$ for the phase frequency and $\sqrt 3 \tilde \Gamma = 0,054$ for the anti-phase frequency, so we later checked whether the FWHM of the curve was what we expected. VEDI CHE VALORI METTERE
-
+We didn't do this process, but another group with similar masses and springs found ${\Gamma = 0,023 \text{ s}^{-1}}$  and $\tilde \Gamma = 0,031  \text{ s}^{-1} $
+We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma = 0,040  \text{ s}^{-1}$ for the phase frequency and $\sqrt 3 \tilde \Gamma = 0,054  \text{ s}^{-1}$ for the anti-phase frequency, so we later checked whether the FWHM of the curve was what we expected. 
 
 %====================================================================================================================================
 %====================================================================================================================================
@@ -306,11 +302,11 @@ We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \
   \label{img:res_contro}
   \caption{Resonance curve for anti-phase frequency}
 \end{figure}
-We started with the resonance curve for the phase frequency. We turned on the motor at a frequency close to the proper frequency we had previously measured with other methods. We started with this frequency to be sure that the oscillations of the system weren't too wide, as if this happened we saw the motion would start to become irregular, oscillating also from side to side. At this frequency, we regulated the amplitude of the function generator until we were satisfied with the oscillations of the system. We then started the ultrasonic sensor from Logger Pro and waited for the sampling to finish. We then checked the FFT from Logger Pro to be sure that the main frequency was the compatible to the value we had read on the oscilloscope. After, we measured the amplitude of the oscillations close to the end of the dataset as explained above. 
+We started with the resonance curve for the phase frequency. We turned on the function generator at a frequency close to the proper frequency we had previously measured with other methods. We started with this frequency to be sure that the oscillations of the system weren't too wide, as if this happened we saw the motion would start to become irregular, oscillating also from side to side. At this frequency, we regulated the amplitude of the function generator until we were satisfied with the oscillations of the system. We then started the ultrasonic sensor from Logger Pro with the same settings as above and waited for the sampling to finish. We then checked the FFT from Logger Pro to be sure that the main frequency was compatible with the value we read on the oscilloscope. After, we measured the amplitude of the oscillations close to the end of the dataset as explained above. 
 
-The same process, without changing the amplitude of the motor was repeated many times, slowly varying the driving frequency each time. 
+The same process, without changing the amplitude of the function generator was repeated many times, slowly varying the driving frequency each time. 
 
-The entire process was then repeated for the anti-phase frequency. The two resonance curves are shown. 
+The entire process was then repeated for the anti-phase frequency. The resonance curve for the anti-phase frequency is shown. 
 %grafici curve di risonanza
 From this data we then measured all the parameters of the resonance curve: 
 \begin{equation}
@@ -327,13 +323,14 @@ We found the following values from the two curves:
            \nu_R  &= (1,713 \pm 0,003) \text{Hz} \\
     \tilde \nu_R  &= (3,093 \pm 0,003) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_R / \tilde \nu_R = 1,806 \pm 0,004$ which isn't compatible with $\sqrt 3$.
+This measured FWHM isn't compatible with the one calculated from $\Gamma$ from the other group. But this was expected since the system wasn't exactly the same.
+We also calculated the ratio between the two frequencies and obtained $ \nu_R / \tilde \nu_R = 1,806 \pm 0,004$ which isn't compatible with $\sqrt 3$.
 
 %====================================================================================================================================
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Beats}
-We then studied the beats phenomenon. This phenomenon is observed when the system oscillates at two close frequencies. In general, when a system oscillates at multiple frequencies, the overall oscillation is the sum of sinusoidal oscillations, each with it sown frequncy. When this is done with two close frequencies, the result of the sum takes a particular shape: the system oscillates at the average of the two frequencies $\nu_{av}$, but the amplitude of these oscillations isn't constant. The amplitude itself is also a sinusoidal function, with a frequency that is the semi-difference of the two frequencies $\nu_{beat}$. So if we study such a system and plot the position against?? time, we see a sinusoidal function with frequency $\nu_{av}$ enclosed in another sinusoidal function, with frequency $\nu_{beat}$. The image shows the result we obtained from frequencies $\nu_5$ and $\nu_6$ below.
+We then studied the beats phenomenon. This phenomenon is observed when the system oscillates at two close frequencies. In general, when a system oscillates at multiple frequencies, the overall oscillation is the sum of sinusoidal oscillations, each with it sown frequncy. When this is done with two close frequencies, the result of the sum takes a particular shape: the system oscillates at the average of the two frequencies $\nu_{av}$, but the amplitude of these oscillations isn't constant. The amplitude itself is also a sinusoidal function, with a frequency that is the semi-difference of the two frequencies $\nu_{beat}$. So if we study such a system and plot the position against time, we see a sinusoidal function with frequency $\nu_{av}$ enclosed in another sinusoidal function, with frequency $\nu_{beat}$. The image shows the result we obtained from frequencies $\nu_5$ and $\nu_6$ below.
 
 \begin{wrapfigure}{r}{0.4\textwidth}
   \begin{center}
@@ -343,7 +340,7 @@ We then studied the beats phenomenon. This phenomenon is observed when the syste
   \caption{Beats from frequencies  $\nu_5$ and $\nu_6$}
 \end{wrapfigure}
 
-To have two frequencies with our setup, we started with a certain driving frequency and quickly changed it. This way the system continues to oscillate at the first frequency but als starts oscillationg at the second frequency. However, beacuse of friction the first frequency will die out ?? because the system loses energy and the driving force only gives energy ?? to the second frequency. Therefore the beats can be observed between when we change the driving frequency and when the first frequency disappears. 
+To have two frequencies with our setup, we started with a certain driving frequency and quickly changed it. This way the system continues to oscillate at the first frequency but also starts oscillationg at the second frequency. However, beacuse of friction the first frequency will die out because the system loses energy and the driving force only gives energy to the second frequency. Therefore the beats can be observed between when we change the driving frequency and when the first frequency disappears. 
 
 To observe the phenomenon we activated the function generator at the anti-phase frequency and activated the ultrasonic sensor from Logger Pro with a sampling time of 500 s. After a few seconds, we quickly changed the driving frequency from the function generator. We then waited for the ultrasonic sensor to stop sampling. The frequencies, read from the oscilloscope and confirmed in Logger Pro are below.
 \begin{equation}
@@ -353,14 +350,14 @@ We then calculated the theoretical modulation frequency.
 \begin{equation}
     \nu_{12} = \frac{|\nu_1 - \nu_2|}{2} = (0,068 \pm 0,004) \text{Hz}
 \end{equation}
-After, we measured the modulation period from the graph by finding three consecutive points in which the modulating amplitude is zero and taking the time difference between the first and the last one. We decided to take $0,2$ s as the time measurements, as we were certain that the exact point when the amplitude was zero was inside this range. For the uncertainty in the period we calculated the root-sum-square of the two uncertainties in the time measurements. We then calculated the experimental modulation frequency by taking the inverse of the period and obtained the following values. To calculate the uncertainty in this frequency we used the standard error propagation formula with partial derivatives.
+After, we measured the modulation period from the graph by finding three consecutive points in which the modulating amplitude is zero and taking the time difference between the first and the last one. We decided to take $0,2$ s as the uncertainty in the time measurements, as we were certain that the exact point when the amplitude was zero was inside this range. For the uncertainty in the period we calculated the root-sum-square of the two uncertainties in the time measurements. We then calculated the experimental modulation frequency by taking the inverse of the period and obtained the following values. To calculate the uncertainty in this frequency we used the standard error propagation formula.
 \begin{align}
     T_{12} &= (15,0 \pm 0,3) \text{s} \\
     \nu_{12}^{exp} &= (0,0669 \pm 0,0013) \text{Hz} 
 \end{align}
 The measured and theoretical frequency are compatible within 0,2 $\sigma$.
 
-We repeated this process starting with the phase frequency with the frequencies below and observed the same phenomenon. Theoretical and experimental modulation frequencies were then obtained as above:
+We repeated this process starting with the phase frequency and observed the same phenomenon. Theoretical and experimental modulation frequencies were then obtained as above:
 \begin{align}
     \nu_{3} &= (1,719 \pm 0,005) \text{Hz} \\
     \nu_{4} &= (1,447 \pm 0,005) \text{Hz} \\
@@ -405,7 +402,7 @@ From these values we made the following graphs to compare them
   \caption{Beats from frequencies  $\nu_5$ and $\nu_6$}
 \end{figure}
 
-From the graphs we can see that the theoretical frequencies aren't compatible with any of other the other frequencies. While the experimental frequency is compatible with the stopwatch frequency, mainly because it has a large uncertainty. Instead its compatible with the generic motion frequency only for the phase. It's not compatible with the frequency from the resonance curve. Since all the measured frequencies are compatible, we believe  there must have a been a systematic error. We think that maybe the metal bar the top spring was attached to may have been oscillating, therefore altering the system and changing its proper frequencies. However we only thought of this after the experiment, so we weren't able to confirm it. 
+From the graphs we can see that, for both phase and anti-phase, the theoretical frequency isn't compatible with any of other the other frequencies. While the experimental frequency is compatible with the stopwatch frequency, mainly because it has a large uncertainty. Instead its compatible with the generic motion frequency only for the phase. It's not compatible with the frequency from the resonance curve. Since all the measured frequencies are compatible, we believe  there must have a been a systematic error. We think that maybe the metal bar the top spring was attached to may have been oscillating, therefore altering the system and changing its proper frequencies. However we only thought of this after the experiment, so we weren't able to confirm it. 
 
 Instead, regarding the beats, we were able to observe the phenomenon in all situations explained above and the measured frequency fit very well with the expected frequency.
 
