@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{bm}
 \usepackage{wrapfig}
+\usepackage{graphicx}
 
 
 %DOMANDE
@@ -53,8 +54,17 @@ The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precis
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Introduction} \label{sec:intro}
-We studied a system with 2 masses and 3 springs, as shown in image AGGIUNGI IMMAGINE
+We studied a system with 2 masses and 3 springs, as shown in image \ref{img:setup}
 Such a system has two proper frequencies, this means that the system will naturally oscillate only at those two frequencies, so that the amplitude is a linear combination of two sine waves with the two proper frequencies. 
+
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{Setup}
+  \end{center}
+  \label{img:setup}
+  \caption{System setup}
+\end{wrapfigure}
 We call the two proper frequencies, phase and anti-phase frequency. If the system oscillates at the phase frequency, the two weights oscillate up and down, perfectly in sync. Instead if the system oscillates at the anti-phase frequency the two weights oscillate such that when one goes down, the other one goes up and vice versa. 
 
 If we assume that the three springs are the same and the two masses are as well 
@@ -291,6 +301,13 @@ We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \
 %====================================================================================================================================
 %====================================================================================================================================
 \subsection{Resonance curve}
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\textwidth]{lorentz_contro}
+  \end{center}
+  \label{img:res_contro}
+  \caption{Resonance curve for anti-phase frequency}
+\end{figure}
 We started with the resonance curve for the phase frequency. We turned on the motor at a frequency close to the proper frequency we had previously measured with other methods. We started with this frequency to be sure that the oscillations of the system weren't too wide, as if this happened we saw the motion would start to become irregular, oscillating also from side to side. At this frequency, we regulated the amplitude of the function generator until we were satisfied with the oscillations of the system. We then started the ultrasonic sensor from Logger Pro and waited for the sampling to finish. We then checked the FFT from Logger Pro to be sure that the main frequency was the compatible to the value we had read on the oscilloscope. After, we measured the amplitude of the oscillations close to the end of the dataset as explained above. 
 
 The same process, without changing the amplitude of the motor was repeated many times, slowly varying the driving frequency each time. 
@@ -310,12 +327,19 @@ Where $\nu$ is the proper frequency and $\nu_d$ is the driving frequency.
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Beats}
-We then studied the beats phenomenon. This phenomenon is observed when the system oscillates at two close frequencies. In general, when a system oscillates at multiple frequencies, the overall oscillation is the sum of sinusoidal oscillations, each with it sown frequncy. When this is done with two close frequencies, the result of the sum takes a particular shape: the system oscillates at the average of the two frequencies $\nu_{av}$, but the amplitude of these oscillations isn't constant. The amplitude itself is also a sinusoidal function, with a frequency that is the semi-difference of the two frequencies $\nu_{beat}$. So if we study such a system and plot the position against?? time, we see a sinusoidal function with frequency $\nu_{av}$ enclosed in another sinusoidal function, with frequency $\nu_{beat}$ . 
+We then studied the beats phenomenon. This phenomenon is observed when the system oscillates at two close frequencies. In general, when a system oscillates at multiple frequencies, the overall oscillation is the sum of sinusoidal oscillations, each with it sown frequncy. When this is done with two close frequencies, the result of the sum takes a particular shape: the system oscillates at the average of the two frequencies $\nu_{av}$, but the amplitude of these oscillations isn't constant. The amplitude itself is also a sinusoidal function, with a frequency that is the semi-difference of the two frequencies $\nu_{beat}$. So if we study such a system and plot the position against?? time, we see a sinusoidal function with frequency $\nu_{av}$ enclosed in another sinusoidal function, with frequency $\nu_{beat}$. The image shows the result we obtained from frequencies $\nu_5$ and $\nu_6$ below.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{battimenti_vicino_fase}
+  \end{center}
+  \label{img:beat}
+  \caption{Beats from frequencies  $\nu_5$ and $\nu_6$}
+\end{wrapfigure}
 
 To have two frequencies with our setup, we started with a certain driving frequency and quickly changed it. This way the system continues to oscillate at the first frequency but als starts oscillationg at the second frequency. However, beacuse of friction the first frequency will die out ?? because the system loses energy and the driving force only gives energy ?? to the second frequency. Therefore the beats can be observed between when we change the driving frequency and when the first frequency disappears. 
 
 To observe the phenomenon we activated the function generator at the anti-phase frequency and activated the ultrasonic sensor from Logger Pro with a sampling time of 500 s. After a few seconds, we quickly changed the driving frequency from the function generator. We then waited for the ultrasonic sensor to stop sampling. The frequencies, read from the oscilloscope and confirmed in Logger Pro are below.
-
 \begin{equation}
     \nu_1 = ( 3,098 \pm 0,005) \text{Hz} \quad \nu_2 = ( 3,233 \pm 0,005) \text{Hz} 
 \end{equation}
