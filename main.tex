@@ -314,19 +314,38 @@ We then studied the beats phenomenon. This phenomenon is observed when the syste
 
 To have two frequencies with our setup, we started with a certain driving frequency and quickly changed it. This way the system continues to oscillate at the first frequency but als starts oscillationg at the second frequency. However, beacuse of friction the first frequency will die out ?? because the system loses energy and the driving force only gives energy ?? to the second frequency. Therefore the beats can be observed between when we change the driving frequency and when the first frequency disappears. 
 
-To observe the phenomenon we activated the function generator at the phase frequency and activated the ultrasonic sensor from Logger Pro with a time?? of ??. After a few seconds, we quickly changed the driving frequency. We then waited for the ultrasonic sensor to stop sampling. We obtained the graph shown in image AGGIUNGI. The frequencies, read from the oscilloscope and confirmed in Logger Pro are below.
+To observe the phenomenon we activated the function generator at the anti-phase frequency and activated the ultrasonic sensor from Logger Pro with a sampling time of 500 s. After a few seconds, we quickly changed the driving frequency from the function generator. We then waited for the ultrasonic sensor to stop sampling. The frequencies, read from the oscilloscope and confirmed in Logger Pro are below.
 
-We then calculated the theoretical modulation frequency and measured the modulation period from the graph. The uncertainty... . We then calculated the experimental modulation frequency by taking the inverse of the period and obtained the following values. 
+\begin{equation}
+    \nu_1 = ( 3,098 \pm 0,005) \text{Hz} \quad \nu_2 = ( 3,233 \pm 0,005) \text{Hz} 
+\end{equation}
+We then calculated the theoretical modulation frequency.
+\begin{equation}
+    \nu_{12} = \frac{|\nu_1 - \nu_2|}{2} = (0,068 \pm 0,004) \text{Hz}
+\end{equation}
+After, we measured the modulation period from the graph by finding three consecutive points in which the modulating amplitude is zero and taking the time difference between the first and the last one. We decided to take $0,2$ s as the time measurements, as we were certain that the exact point when the amplitude was zero was inside this range. For the uncertainty in the period we calculated the root-sum-square of the two uncertainties in the time measurements. We then calculated the experimental modulation frequency by taking the inverse of the period and obtained the following values. To calculate the uncertainty in this frequency we used the standard error propagation formula with partial derivatives.
+\begin{align}
+    T_{12} &= (15,0 \pm 0,3) \text{s} \\
+    \nu_{12}^{exp} &= (0,0669 \pm 0,0013) \text{Hz} 
+\end{align}
+The measured and theoretical frequency are compatible within 0,2 $\sigma$.
 
-The values are compatible ???
+We repeated this process starting with the phase frequency with the frequencies below and observed the same phenomenon. Theoretical and experimental modulation frequencies were then obtained as above:
+\begin{align}
+    \nu_{3} &= (1,719 \pm 0,005) \text{Hz} \\
+    \nu_{4} &= (1,447 \pm 0,005) \text{Hz} \\
+    \nu_{34} &= (0,136 \pm 0,004) \text{Hz} \\
+    \nu_{34}^{exp} &= (0,131 \pm 0,005) \text{Hz} 
+\end{align}
+The two frequencies are compatible within 1 $\sigma$.
 
-We repeated this process starting with the anti-phase frequency with the frequencies below and observed the same phenomenon. Theoretical and experimental modulation frequencies were then obtained as above:
-
-We then also repeated the process with the first frequency close to the phase frequency, to confirm that the phenomenon can be observed between any two frequencies, neither of the two has to be a proper frequency. First and second frequencies, along with Theoretical and experimental modulation frequencies are shown below.
-
-
-
-
-
+We then also repeated the process with the first frequency close to the phase frequency, to confirm that the phenomenon can be observed between any two frequencies, neither of the two has to be a proper frequency. First and second frequencies, along with theoretical and experimental modulation frequencies are shown below.
+\begin{align}
+    \nu_{5} &= (1,722 \pm 0,005) \text{Hz} \\
+    \nu_{6} &= (2,021 \pm 0,005) \text{Hz} \\
+    \nu_{56} &= (0,150 \pm 0,004) \text{Hz} \\
+    \nu_{56}^{exp} &= (0,151 \pm 0,006) \text{Hz} 
+\end{align}
+The two frequencies are compatible within 0,2 $\sigma$.
 
 \end{document}
