@@ -4,6 +4,7 @@
 \usepackage{bm}
 \usepackage{wrapfig}
 \usepackage{graphicx}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
 
 
 %DOMANDE
@@ -42,13 +43,14 @@
     \item Precision scale with 0,0001 kg sensibility
     \item Horizontal support to hang the springs on
     \item Horizontal support for the ultrasonic sensor
+    \item Stopwatch, sensibility 0,001 s
     \item Ultrasonic sensor, sensibility 0,001 m
     \item Logger Pro software
     \item Actuator
     \item Function Generator SiemensAX34
-    \item Oscilloscope Tektronix TDS1002, 60 MHz
+    \item Oscilloscope Tektronix TDS1002, 60 MHz, sensibility 0,005 Hz
 \end{enumerate}
-The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precision scale.
+The uncertainty in all of the masses is 0,0001 kg, the sensibility of the precision scale. The uncertainty in all the frequencies measured from the oscilloscope is 0,005 Hz, its sensibility.
 
 %====================================================================================================================================
 %====================================================================================================================================
@@ -131,13 +133,13 @@ uncertainty. We then multiplied by $g$ both the value and its uncertainty to obt
 The uncertainty we used in $x$ was 0,001 m.
 %The uncertainty we used in $x$ was 0,002 m for "k_2" which was the first spring we studied, and 0,001 m for the other two. We used a higher uncertainty in the first spring because by studying the $\chi^2$ of the linear regression we realized we may have underestimated the uncertainty, as we were probably less precise since it was the first spring we studied. 
 
-To test the fit of the data we did a $\chi^2$ test with $5-2 = 3$ degrees of freedom, and calculated the level of compatibility.
+To test the fit of the data we did a $\chi^2$ test with $5-2 = 3$ degrees of freedom, and calculated the probability that the actual $\chi^2$ is higher than the value we obtained.
 
 This same process was repeated for all 3 springs and the following values were obtained.
 \begin{align}
-    k_1 &= (20,3 \pm 0,4) \text{N/m} \quad \tilde \chi_1^2 = 0,09 \quad P_1 = \dots \\
-    k_2 &= (21,6 \pm 0,4) \text{N/m} \quad \tilde \chi_2^2 = 2,77 \quad P_2 = \dots \\
-    k_3 &= (20,7 \pm 0,4) \text{N/m} \quad \tilde \chi_3^2 = 0,28 \quad P_3 = \dots 
+    k_1 &= (20,3 \pm 0,4) \text{N/m} \quad \tilde \chi_1^2 = 0,09 \quad P_1 = 96\% \\
+    k_2 &= (21,6 \pm 0,4) \text{N/m} \quad \tilde \chi_2^2 = 2,77 \quad P_2 =  5\% \\
+    k_3 &= (20,7 \pm 0,4) \text{N/m} \quad \tilde \chi_3^2 = 0,28 \quad P_3 = 84\%
 \end{align}
 The second one has a high $\tilde \chi^2$, mainly due to the third mass. We realized this during the experiment, so we weighed the mass again and took the measurements again but we obtained the same values. We believe that either we underestimated the uncertainties or we made a mistake in the measurents, as even a difference of 0,001 m changes the $\tilde \chi^2$ significantly.
 
@@ -160,7 +162,7 @@ $\tilde k_{wav}$ was calculated on all springs. We calculated the uncertainties 
            k_{wav} &= (20,82 \pm 0,23) \text{N/m} \\
     \tilde k_{wav} &= (20,50 \pm 0,28) \text{N/m}
 \end{align}
-As $m$ we used $M_1=M_2=0,1421 \pm 0,00014$ kg, the sum of the mass of the cd and the weight. Its uncertainty was calculated as the root-sum-square of the uncertainties in the mass of the cd and of the weight.
+As $m$ we used $M_1=M_2=0,14210 \pm 0,00014$ kg, the sum of the mass of the cd and the weight. Its uncertainty was calculated as the root-sum-square of the uncertainties in the mass of the cd and of the weight.
 To calculate the uncertainty in the frequencies we used the following formulas, where $\delta(\cdot)$ represents the uncertainty of the given variable.
 \begin{equation} \label{eq:inc_nuth}
     \delta \nu_{th}
@@ -222,32 +224,26 @@ With these calculations we obtained the following results.
     \tilde \nu_{exp} &= (3,182 \pm 0,022) \text{Hz}
 \end{align}
 
-And for the ratio between the two we obtained the following result, which isn't compatible????
+And for the ratio between the two we obtained the following result, which isn't compatible with $\sqrt 3$, the ratio between the theoretical frequencies. ??? di quanto?
 \begin{equation}
     \tilde \nu_{exp} / \nu_{exp} = 1,823 \pm 0,013
 \end{equation}
-
-%COMPATIBILITA
 
 %====================================================================================================================================
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Second setup} \label{sec:setup2}
-The second setup is the 2 mass, 3 spring system we want to examine. The springs and masses are setup as shown in the image. 
-% aggiungi immagine
-In the middle we put the spring with the different elastic coefficient $k_2$, so that at least for the phase frequency the assumption that the springs have the same elastic coefficient is true. ???PER QUESTO?
+The second setup is the 2 mass, 3 spring system we want to examine. The springs and masses are setup as shown in the image \ref{img:setup}
+In the middle we put the spring with the different elastic coefficient $k_2$, so that at least for the phase frequency the assumption that the springs have the same elastic coefficient is true. 
 The spring on top is attached to a metal bar and the spring on the bottom is attached to the actuator. The actuator is connected to a function generator and to an oscilloscope to measure the frequency at which the it is oscillating. On a plate beside the actuator we placed the ultrasonic sensor which is connected to the computer program "Logger Pro". 
 
 The transmitter in the sensor emits sound waves and the receiver sends an electric signal when the sound comes back. The device measures the time it takes for the sound to come back and it then divides by the speed of sound to obtain the position of the object that reflected the sound waves. So the sensor effectively gives us the position of the bottom mass at regular intervals that we set on Logger Pro. The program also calculates the FFT, so we have another way to read the frequency at which the system oscillates which we can compare to the value we read on the oscilloscope. 
-
 
 %====================================================================================================================================
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Estimating $\bm \nu$ from the FFT of a generic motion}
-The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice, the graph shows the result of the first FFT. 
-%INCLUDERE GRAFICO FFT
-We obtained the following values. The uncertainty was estimated by calculating the width of the peak in the FFT for each frequency.
+The first way we measured the frequencies was by imposing a random motion on the masses and studying the FFT produced by Logger Pro. Without an external force, the system can only oscillate at its two proper frequencies, so by studying the FFT of the motion we should be able to identify the two proper frequencies. We did this process twice and obtained the following values. The uncertainty was estimated by calculating the width of the peak in the FFT for each frequency.
 \begin{align}
            \nu_g^1 &= (1,729 \pm 0,015) \text{Hz} \quad        \nu_g^2 = (1,729 \pm 0,015) \text{Hz} \\
     \tilde \nu_g^1 &= (3,106 \pm 0,015) \text{Hz} \quad \tilde \nu_g^2 = (3,096 \pm 0,015) \text{Hz}
@@ -257,22 +253,21 @@ The two values for phase and the two for anti-phase were compatible so we calcul
            \nu_g &= (1,729 \pm 0,011) \text{Hz}\\
     \tilde \nu_g &= (3,101 \pm 0,011) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_g / \tilde \nu_g = 1,794 \pm 0,009$ which is compatible o no???
-
+We also calculated the ratio between the two and obtained $ \nu_g / \tilde \nu_g = 1,794 \pm 0,009$ which isn't compatible with $\sqrt 3$
 
 %====================================================================================================================================
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Calculating $\bm \nu$ by measuring the period of oscillation}
 
-The second way we measured the frequency was by making the two masses move in phase and then measuring the time it took to complete $n=10$ oscillations. This time was measured 5 times and the same process was repeated for anti-phase. To make the masses move in phase, we manually lifted the two masses of approximately the same height and then let go. Instead, to make them move in anti-phase, we lifted one of the masses and lowered the other, by approximately the same height and then let go.
+The second way we measured the frequency was by making the two masses move in phase and then measuring the time it took to complete $n=10$ oscillations. This time was measured 5 times with the stopwatch and the same process was repeated for anti-phase. To make the masses move in phase, we manually lifted the two masses of approximately the same height and then let go. Instead, to make them move in anti-phase, we lifted one of the masses and lowered the other, by approximately the same height and then let go.
 
 We then calculated the mean of the 5 values for phase and the 5 for anti phase. The results are shown below, along with the uncertainty of the mean. 
 \begin{align}
            \nu_T &= (1,80 \pm 0,03) \text{Hz} \\
     \tilde \nu_T &= (2,96 \pm 0,13) \text{Hz}
 \end{align}
-We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T = 1,65 \pm 0,07$ which is compatible o no???
+We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T = 1,65 \pm 0,07$ which is compatible with $\sqrt 3$ within $1 \sigma$.
 %includere medie e incertezze
 
 
@@ -280,7 +275,7 @@ We also calculated the ratio between the two and obtained $ \nu_T / \tilde \nu_T
 %====================================================================================================================================
 %====================================================================================================================================
 \section{Measuring $ \bm \nu $ from the resonance curve}
-The final way we measured the frequencies was by studying the system with a driving external time-dependent sinusoidal force. By varying the driving frequencies we can reconstruct the resonance curve of the system, from which we can determine the proper frequency of the system, as it is the center of the curve. We repeated this process for both the phase frequency and the anti-phase frequency.
+The final way we measured the frequencies was by studying the system with a driving external time-dependent sinusoidal force. By varying the driving frequencies we can reconstruct the resonance curve of the system, from which we can determine the proper frequency of the system, as it is the center of the curve. This is true in the approximation that $\Gamma^2 << \nu$ which can be assumed in this case. We repeated this process for both the phase frequency and the anti-phase frequency.
 
 
 %====================================================================================================================================
@@ -288,14 +283,17 @@ The final way we measured the frequencies was by studying the system with a driv
 \subsection{Measuring $\bm \Gamma$}
 The width of the resonance curve depends on $\Gamma$, the damping coefficient. The higher it, is the wider the resonance curve is. In order to reconstruct the curve, we want it to be as wide as possible, so we want $\Gamma$ to be as high as possible. This is why we attached disks to the masses, to increase friction and thus increase $\Gamma$ as well. Furthermore, $\Gamma$ depends on the masses used. Smaller masses will have a higher $\Gamma$, so we used a small mass. %perché non può esser minuscola??
 To measure $\Gamma$ we would have had to impose the phase motion as explained above, activate the ultrasonic sensor from Logger Pro and wait for it to finish. After, we would have had to calculate the amplitude of motion near the beginning of the dataset??. To do this we had to find a maximum and an adjacent minimum of the position and calculate the semi-difference between the two. We call $A_i$ this amplitude and $t_i$ the average of the time measurement for the maximum and that of the minimum. We repeat the same process near the end of the dataset to obtain the values $A_f$ and $t_f$. $\Gamma$ can then be calculated as follows.
-\begin{align}
-    A(t) &= A_0 e^{-\frac{t}{2} \Gamma} \\
-    A_f / A_i &= e^{-\frac{t_f-t_i}{2} \Gamma} \\
-    \Gamma &= -2 \frac{ \ln(A_f / A_i) }{ t_f-t_i }
-\end{align}
+%\begin{align}
+%    A(t) &= A_0 e^{-\frac{t}{2} \Gamma} \\
+%    A_f / A_i &= e^{-\frac{t_f-t_i}{2} \Gamma} \\
+%    \Gamma &= -2 \frac{ \ln(A_f / A_i) }{ t_f-t_i }
+%\end{align}
+\begin{equation}
+    \Gamma = -2 \frac{ \ln(A_f / A_i) }{ t_f-t_i }
+\end{equation}
 
-We didn't do this process, but another group with similar masses and springs found $\Gamma = 0,0232$ INCERTEZZA?? and $\tilde \Gamma = 0,031$
-We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma = \dots$ for the phase frequency and $\sqrt 3 \tilde \Gamma = \dots$ for the anti-phase frequency, so we later checked whether the FWHM of the curve was what we expected. VEDI CHE VALORI METTERE
+We didn't do this process, but another group with similar masses and springs found $\Gamma = 0,023$ INCERTEZZA?? and $\tilde \Gamma = 0,031$
+We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \Gamma = 0,040$ for the phase frequency and $\sqrt 3 \tilde \Gamma = 0,054$ for the anti-phase frequency, so we later checked whether the FWHM of the curve was what we expected. VEDI CHE VALORI METTERE
 
 
 %====================================================================================================================================
@@ -303,7 +301,7 @@ We measure $\Gamma$ because the FWHM of the resonance curve should be $\sqrt 3 \
 \subsection{Resonance curve}
 \begin{figure}
   \begin{center}
-    \includegraphics[width=\textwidth]{lorentz_contro}
+    \includegraphics[width=0.8\textwidth]{lorentz_contro}
   \end{center}
   \label{img:res_contro}
   \caption{Resonance curve for anti-phase frequency}
@@ -320,8 +318,16 @@ From this data we then measured all the parameters of the resonance curve:
                 \sqrt{( \nu^2 - \nu_d^2 )^2 +
                 \left ( \frac{\Gamma}{2\pi} \right )^2 \nu_d^2}}
 \end{equation}  
-Where $\nu$ is the proper frequency and $\nu_d$ is the driving frequency.
-%trovare il massimo esatto
+Where $\nu$ is the proper frequency and $\nu_d$ is the driving frequency. To find $\Gamma$ we needed the FWHM, and to find the FWHM we needed the two frequencies that had an amplitude that was half the maximum. We assumed that the maximum was the highest amplitude we measured. To find those two points we interpolated between the points that were just above half maximum and just below. To propagate the uncertainties we used the standard formula with partial derivatives. The FWHM was then the difference between those two values. $\Gamma$ was then FWHM/$\sqrt 3$. And finally, we calculated $F/m$ from the maximum, which from the formula above with $\nu_d = \nu$ is given by: $F/m = 2\pi \nu a_{max} \Gamma$. 
+
+We found the following values from the two curves:
+\begin{align}
+    \text{FWHM}        &= (0,034 \pm 0,006) \text{Hz}\\
+    \text{FWHM}_{anti} &= (0,041 \pm 0,006) \text{Hz}\\
+           \nu_R  &= (1,713 \pm 0,003) \text{Hz} \\
+    \tilde \nu_R  &= (3,093 \pm 0,003) \text{Hz}
+\end{align}
+We also calculated the ratio between the two and obtained $ \nu_R / \tilde \nu_R = 1,806 \pm 0,004$ which isn't compatible with $\sqrt 3$.
 
 %====================================================================================================================================
 %====================================================================================================================================
@@ -371,5 +377,36 @@ We then also repeated the process with the first frequency close to the phase fr
     \nu_{56}^{exp} &= (0,151 \pm 0,006) \text{Hz} 
 \end{align}
 The two frequencies are compatible within 0,2 $\sigma$.
+
+\pagebreak
+\section{Results}
+We found the following values for the phase and anti-phase frequency. 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+         & ANTI-PHASE (Hz) &  & PHASE (Hz) &  \\ \hline
+         & Values & Uncertainties & Values & Uncertainties \\ \hline
+        Theoretical & 3,337 & 0,019 & 1,911 & 0,013 \\ \hline
+        Experimental & 3,182 & 0,022 & 1,745 & 0,012 \\ \hline
+        Generic motion & 3,101 & 0,015 & 1,729 & 0,015 \\ \hline
+        Stopwatch & 2,96 & 0,13 & 1,80 & 0,03 \\ \hline
+        Resonance curve & 3,093 & 0,003 & 1,713 & 0,003 \\ \hline
+    \end{tabular}
+    \caption{Frequency values}
+\end{table}
+
+From these values we made the following graphs to compare them
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=\textwidth]{phase-anti}
+  \end{center}
+  \label{img:freq_comp}
+  \caption{Beats from frequencies  $\nu_5$ and $\nu_6$}
+\end{figure}
+
+From the graphs we can see that the theoretical frequencies aren't compatible with any of other the other frequencies. While the experimental frequency is compatible with the stopwatch frequency, mainly because it has a large uncertainty. Instead its compatible with the generic motion frequency only for the phase. It's not compatible with the frequency from the resonance curve. Since all the measured frequencies are compatible, we believe  there must have a been a systematic error. We think that maybe the metal bar the top spring was attached to may have been oscillating, therefore altering the system and changing its proper frequencies. However we only thought of this after the experiment, so we weren't able to confirm it. 
+
+Instead, regarding the beats, we were able to observe the phenomenon in all situations explained above and the measured frequency fit very well with the expected frequency.
 
 \end{document}
